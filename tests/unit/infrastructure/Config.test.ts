@@ -1,3 +1,4 @@
+/** Unit tests for {@link loadConfig} — covers required-variable validation, URL normalisation, and header precedence. */
 import { afterEach, describe, expect, it } from "vitest";
 import { loadConfig } from "../../../src/config/Config.js";
 import { RedashErrorKind } from "../../../src/domain/errors/RedashError.js";

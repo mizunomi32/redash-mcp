@@ -6,6 +6,19 @@ import { createGetQueryHandler, getQuerySchema } from "./tools/getQueryTool.js";
 import { createListQueriesHandler, listQueriesSchema } from "./tools/listQueriesTool.js";
 import { createRunQueryHandler, runQuerySchema } from "./tools/runQueryTool.js";
 
+/**
+ * Constructs and configures the MCP server instance.
+ *
+ * Registers the three read-only Redash tools (`list_queries`, `get_query`,
+ * `run_query`) and wires each tool handler to its corresponding use case.
+ * The returned `McpServer` is transport-agnostic; callers connect it to a
+ * transport (e.g. `StdioServerTransport`) after creation.
+ *
+ * @param listQueriesUseCase - Use case for listing and searching queries.
+ * @param getQueryUseCase - Use case for fetching a single query definition.
+ * @param runQueryUseCase - Use case for executing a query and returning results.
+ * @returns Configured `McpServer` ready to be connected to a transport.
+ */
 export function createMcpServer(
   listQueriesUseCase: ListQueriesUseCase,
   getQueryUseCase: GetQueryUseCase,

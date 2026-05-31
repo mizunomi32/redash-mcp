@@ -1,3 +1,4 @@
+/** Unit tests for {@link GetQueryUseCase}. */
 import { describe, expect, it, vi } from "vitest";
 import { GetQueryUseCase } from "../../../src/application/usecases/GetQueryUseCase.js";
 import { RedashError, RedashErrorKind } from "../../../src/domain/errors/RedashError.js";

@@ -1,3 +1,4 @@
+/** Unit tests for {@link RunQueryUseCase} — covers immediate results, async job polling, truncation, timeouts, and SQL errors. */
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { RunQueryUseCase } from "../../../src/application/usecases/RunQueryUseCase.js";
 import { JobStatus } from "../../../src/domain/entities/Job.js";
