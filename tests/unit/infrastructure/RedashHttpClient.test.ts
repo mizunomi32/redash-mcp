@@ -1,6 +1,7 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
-import { RedashHttpClient } from "../../../src/infrastructure/redash/RedashHttpClient.js";
+/** Unit tests for {@link RedashHttpClient} — covers header forwarding and HTTP error mapping using a stubbed global fetch. */
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { RedashErrorKind } from "../../../src/domain/errors/RedashError.js";
+import { RedashHttpClient } from "../../../src/infrastructure/redash/RedashHttpClient.js";
 
 const mockFetch = vi.fn();
 vi.stubGlobal("fetch", mockFetch);

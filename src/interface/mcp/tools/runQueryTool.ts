@@ -2,6 +2,10 @@ import { z } from "zod";
 import type { RunQueryUseCase } from "../../../application/usecases/RunQueryUseCase.js";
 import { formatToolError } from "../toolError.js";
 
+/**
+ * Zod schema for the `run_query` MCP tool input.
+ * Validated and parsed by the MCP SDK before the handler is called.
+ */
 export const runQuerySchema = {
   query_id: z.number().int().positive().describe("Numeric ID of the Redash query to execute"),
   parameters: z
@@ -14,13 +18,7 @@ export const runQuerySchema = {
     .min(0)
     .default(0)
     .describe("Max cache age in seconds; 0 forces fresh execution"),
-  row_limit: z
-    .number()
-    .int()
-    .positive()
-    .max(10000)
-    .default(100)
-    .describe("Max rows to return"),
+  row_limit: z.number().int().positive().max(10000).default(100).describe("Max rows to return"),
   timeout_sec: z
     .number()
     .int()
@@ -30,6 +28,7 @@ export const runQuerySchema = {
     .describe("Execution timeout in seconds"),
 };
 
+/** Input type inferred from `runQuerySchema`. */
 export type RunQueryInput = {
   query_id: number;
   parameters?: Record<string, unknown>;
@@ -38,6 +37,19 @@ export type RunQueryInput = {
   timeout_sec: number;
 };
 
+/**
+ * Creates the handler function for the `run_query` MCP tool.
+ *
+ * Executes the query and returns results as JSON.  When the query does not
+ * finish within `timeout_sec`, the handler returns a structured timeout
+ * response (with `status: "in_progress_interrupted"` and the `job_id`) rather
+ * than an error, so that callers can choose to retry or surface the partial
+ * status to the user.
+ * Any error is converted to an MCP error response via `formatToolError`.
+ *
+ * @param useCase - Use case instance injected at server construction time.
+ * @returns Async MCP tool handler.
+ */
 export function createRunQueryHandler(useCase: RunQueryUseCase) {
   return async (input: RunQueryInput) => {
     try {
