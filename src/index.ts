@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { loadConfig } from "./config/Config.js";
 import { RedashHttpClient } from "./infrastructure/redash/RedashHttpClient.js";
