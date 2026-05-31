@@ -1,5 +1,7 @@
 # redash-mcp
 
+[日本語版 README はこちら](./README.ja.md)
+
 Read-only MCP server for Redash. Allows AI agents (Claude etc.) to list, inspect, and execute existing Redash queries via the MCP protocol.
 
 ## Tools
