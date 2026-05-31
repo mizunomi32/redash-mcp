@@ -1,6 +1,6 @@
-import type { IQueryRepository } from "../../domain/repositories/IQueryRepository.js";
 import type { Query } from "../../domain/entities/Query.js";
 import { RedashError, RedashErrorKind } from "../../domain/errors/RedashError.js";
+import type { IQueryRepository } from "../../domain/repositories/IQueryRepository.js";
 
 export class GetQueryUseCase {
   constructor(private readonly queryRepository: IQueryRepository) {}

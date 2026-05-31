@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { ListQueriesUseCase } from "../../../src/application/usecases/ListQueriesUseCase.js";
 import type { IQueryRepository } from "../../../src/domain/repositories/IQueryRepository.js";
 

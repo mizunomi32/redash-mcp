@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { loadConfig } from "./config/Config.js";
-import { RedashHttpClient } from "./infrastructure/redash/RedashHttpClient.js";
-import { RedashQueryRepository } from "./infrastructure/redash/RedashQueryRepository.js";
-import { RedashJobRepository } from "./infrastructure/redash/RedashJobRepository.js";
-import { ListQueriesUseCase } from "./application/usecases/ListQueriesUseCase.js";
 import { GetQueryUseCase } from "./application/usecases/GetQueryUseCase.js";
+import { ListQueriesUseCase } from "./application/usecases/ListQueriesUseCase.js";
 import { RunQueryUseCase } from "./application/usecases/RunQueryUseCase.js";
-import { createMcpServer } from "./interface/mcp/McpServer.js";
+import { loadConfig, type RedashConfig } from "./config/Config.js";
 import { RedashError } from "./domain/errors/RedashError.js";
+import { RedashHttpClient } from "./infrastructure/redash/RedashHttpClient.js";
+import { RedashJobRepository } from "./infrastructure/redash/RedashJobRepository.js";
+import { RedashQueryRepository } from "./infrastructure/redash/RedashQueryRepository.js";
+import { createMcpServer } from "./interface/mcp/McpServer.js";
 
 async function main(): Promise<void> {
-  let config;
+  let config: RedashConfig;
   try {
     config = loadConfig();
   } catch (error) {

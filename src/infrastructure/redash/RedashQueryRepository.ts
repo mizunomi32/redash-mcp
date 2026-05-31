@@ -1,12 +1,15 @@
-import type { IQueryRepository, QueryResultsResponse } from "../../domain/repositories/IQueryRepository.js";
 import type { ListQueriesOptions, ListQueriesResult, Query } from "../../domain/entities/Query.js";
 import type { QueryResultData } from "../../domain/entities/QueryResult.js";
+import type {
+  IQueryRepository,
+  QueryResultsResponse,
+} from "../../domain/repositories/IQueryRepository.js";
 import type { RedashHttpClient } from "./RedashHttpClient.js";
 import type {
-  RedashApiQueryListResponse,
   RedashApiQuery,
-  RedashApiResultsResponse,
+  RedashApiQueryListResponse,
   RedashApiQueryResult,
+  RedashApiResultsResponse,
 } from "./types/redashApiTypes.js";
 
 export class RedashQueryRepository implements IQueryRepository {

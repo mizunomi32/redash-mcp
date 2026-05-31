@@ -43,10 +43,7 @@ export class RedashHttpClient {
     }
 
     if (response.status === 404) {
-      throw new RedashError(
-        RedashErrorKind.NotFound,
-        `Resource not found: ${path}`,
-      );
+      throw new RedashError(RedashErrorKind.NotFound, `Resource not found: ${path}`);
     }
 
     if (!response.ok) {

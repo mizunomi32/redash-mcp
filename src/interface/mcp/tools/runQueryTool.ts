@@ -14,13 +14,7 @@ export const runQuerySchema = {
     .min(0)
     .default(0)
     .describe("Max cache age in seconds; 0 forces fresh execution"),
-  row_limit: z
-    .number()
-    .int()
-    .positive()
-    .max(10000)
-    .default(100)
-    .describe("Max rows to return"),
+  row_limit: z.number().int().positive().max(10000).default(100).describe("Max rows to return"),
   timeout_sec: z
     .number()
     .int()

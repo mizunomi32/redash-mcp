@@ -1,8 +1,12 @@
-import type { IQueryRepository } from "../../domain/repositories/IQueryRepository.js";
-import type { IJobRepository } from "../../domain/repositories/IJobRepository.js";
-import type { QueryResult, RunQueryOptions } from "../../domain/entities/QueryResult.js";
-import { JobStatus, type JobPollOutcome } from "../../domain/entities/Job.js";
+import { type JobPollOutcome, JobStatus } from "../../domain/entities/Job.js";
+import type {
+  QueryResult,
+  QueryResultData,
+  RunQueryOptions,
+} from "../../domain/entities/QueryResult.js";
 import { RedashError, RedashErrorKind } from "../../domain/errors/RedashError.js";
+import type { IJobRepository } from "../../domain/repositories/IJobRepository.js";
+import type { IQueryRepository } from "../../domain/repositories/IQueryRepository.js";
 
 export type RunQueryResult =
   | { kind: "completed"; result: QueryResult }
@@ -20,7 +24,7 @@ export class RunQueryUseCase {
       max_age: options.max_age,
     });
 
-    let data;
+    let data: QueryResultData;
 
     if (response.kind === "immediate") {
       data = response.data;

@@ -1,8 +1,4 @@
-import type {
-  ListQueriesOptions,
-  ListQueriesResult,
-  Query,
-} from "../entities/Query.js";
+import type { ListQueriesOptions, ListQueriesResult, Query } from "../entities/Query.js";
 import type { QueryResultData } from "../entities/QueryResult.js";
 
 export interface IQueryRepository {

@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { GetQueryUseCase } from "../../../src/application/usecases/GetQueryUseCase.js";
-import type { IQueryRepository } from "../../../src/domain/repositories/IQueryRepository.js";
 import { RedashError, RedashErrorKind } from "../../../src/domain/errors/RedashError.js";
+import type { IQueryRepository } from "../../../src/domain/repositories/IQueryRepository.js";
 
 const mockRepository: IQueryRepository = {
   listQueries: vi.fn(),

@@ -1,9 +1,9 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { RunQueryUseCase } from "../../../src/application/usecases/RunQueryUseCase.js";
-import type { IQueryRepository } from "../../../src/domain/repositories/IQueryRepository.js";
-import type { IJobRepository } from "../../../src/domain/repositories/IJobRepository.js";
 import { JobStatus } from "../../../src/domain/entities/Job.js";
 import { RedashErrorKind } from "../../../src/domain/errors/RedashError.js";
+import type { IJobRepository } from "../../../src/domain/repositories/IJobRepository.js";
+import type { IQueryRepository } from "../../../src/domain/repositories/IQueryRepository.js";
 
 vi.useFakeTimers();
 
@@ -77,8 +77,18 @@ describe("RunQueryUseCase - async job polling", () => {
       jobId: "job-123",
     });
     vi.mocked(mockJobRepository.getJob)
-      .mockResolvedValueOnce({ id: "job-123", status: JobStatus.Started, error: "", query_result_id: null })
-      .mockResolvedValueOnce({ id: "job-123", status: JobStatus.Done, error: "", query_result_id: 99 });
+      .mockResolvedValueOnce({
+        id: "job-123",
+        status: JobStatus.Started,
+        error: "",
+        query_result_id: null,
+      })
+      .mockResolvedValueOnce({
+        id: "job-123",
+        status: JobStatus.Done,
+        error: "",
+        query_result_id: 99,
+      });
     vi.mocked(mockQueryRepository.getQueryResult).mockResolvedValue({
       columns: mockColumns,
       rows: mockRows.slice(0, 5),

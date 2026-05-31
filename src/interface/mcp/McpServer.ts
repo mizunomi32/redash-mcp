@@ -1,13 +1,10 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { ListQueriesUseCase } from "../../application/usecases/ListQueriesUseCase.js";
 import type { GetQueryUseCase } from "../../application/usecases/GetQueryUseCase.js";
+import type { ListQueriesUseCase } from "../../application/usecases/ListQueriesUseCase.js";
 import type { RunQueryUseCase } from "../../application/usecases/RunQueryUseCase.js";
-import {
-  listQueriesSchema,
-  createListQueriesHandler,
-} from "./tools/listQueriesTool.js";
-import { getQuerySchema, createGetQueryHandler } from "./tools/getQueryTool.js";
-import { runQuerySchema, createRunQueryHandler } from "./tools/runQueryTool.js";
+import { createGetQueryHandler, getQuerySchema } from "./tools/getQueryTool.js";
+import { createListQueriesHandler, listQueriesSchema } from "./tools/listQueriesTool.js";
+import { createRunQueryHandler, runQuerySchema } from "./tools/runQueryTool.js";
 
 export function createMcpServer(
   listQueriesUseCase: ListQueriesUseCase,

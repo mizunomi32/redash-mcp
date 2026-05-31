@@ -10,10 +10,7 @@ export function loadConfig(): RedashConfig {
   const apiKey = process.env.REDASH_API_KEY;
 
   if (!redashUrl) {
-    throw new RedashError(
-      RedashErrorKind.Config,
-      "REDASH_URL environment variable is required",
-    );
+    throw new RedashError(RedashErrorKind.Config, "REDASH_URL environment variable is required");
   }
 
   if (!apiKey) {
@@ -29,9 +26,9 @@ export function loadConfig(): RedashConfig {
   const headers: Record<string, string> = {
     ...extraHeaders,
     "Content-Type": "application/json",
-    "Accept": "application/json",
+    Accept: "application/json",
     // Authorization is always last to prevent REDASH_EXTRA_HEADERS override
-    "Authorization": `Key ${apiKey}`,
+    Authorization: `Key ${apiKey}`,
   };
 
   return Object.freeze({ baseUrl, headers: Object.freeze(headers) });
@@ -51,10 +48,7 @@ function parseExtraHeaders(raw: string | undefined): Record<string, string> {
   }
 
   if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-    throw new RedashError(
-      RedashErrorKind.Config,
-      "REDASH_EXTRA_HEADERS must be a JSON object",
-    );
+    throw new RedashError(RedashErrorKind.Config, "REDASH_EXTRA_HEADERS must be a JSON object");
   }
 
   const sanitized: Record<string, string> = {};

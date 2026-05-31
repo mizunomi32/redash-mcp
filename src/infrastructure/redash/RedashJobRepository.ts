@@ -1,5 +1,5 @@
-import type { IJobRepository } from "../../domain/repositories/IJobRepository.js";
 import type { Job } from "../../domain/entities/Job.js";
+import type { IJobRepository } from "../../domain/repositories/IJobRepository.js";
 import type { RedashHttpClient } from "./RedashHttpClient.js";
 import type { RedashApiJobResponse } from "./types/redashApiTypes.js";
 

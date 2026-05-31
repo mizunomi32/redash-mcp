@@ -1,8 +1,5 @@
+import type { ListQueriesOptions, ListQueriesResult } from "../../domain/entities/Query.js";
 import type { IQueryRepository } from "../../domain/repositories/IQueryRepository.js";
-import type {
-  ListQueriesOptions,
-  ListQueriesResult,
-} from "../../domain/entities/Query.js";
 
 export class ListQueriesUseCase {
   constructor(private readonly queryRepository: IQueryRepository) {}
