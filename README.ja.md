@@ -22,6 +22,33 @@ Redash用の読み取り専用MCPサーバーです。AIエージェント（Cla
 
 ## セットアップ
 
+### npx（GitHubから直接実行）
+
+インストール不要でGitHubリポジトリから直接実行できます。
+
+```bash
+REDASH_URL=https://redash.example.com \
+REDASH_API_KEY=your-key \
+npx github:mizunomi32/redash-mcp
+```
+
+Claude Desktop の設定例：
+
+```json
+{
+  "mcpServers": {
+    "redash": {
+      "command": "npx",
+      "args": ["-y", "github:mizunomi32/redash-mcp"],
+      "env": {
+        "REDASH_URL": "https://redash.example.com",
+        "REDASH_API_KEY": "<read-only-api-key>"
+      }
+    }
+  }
+}
+```
+
 ### Claude Desktop — Docker起動
 
 ```json

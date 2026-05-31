@@ -24,6 +24,33 @@ Read-only MCP server for Redash. Allows AI agents (Claude etc.) to list, inspect
 
 ## Setup
 
+### npx (GitHub)
+
+No installation required. Run directly from the GitHub repository:
+
+```bash
+REDASH_URL=https://redash.example.com \
+REDASH_API_KEY=your-key \
+npx github:mizunomi32/redash-mcp
+```
+
+Claude Desktop config:
+
+```json
+{
+  "mcpServers": {
+    "redash": {
+      "command": "npx",
+      "args": ["-y", "github:mizunomi32/redash-mcp"],
+      "env": {
+        "REDASH_URL": "https://redash.example.com",
+        "REDASH_API_KEY": "<read-only-api-key>"
+      }
+    }
+  }
+}
+```
+
 ### Claude Desktop — Docker
 
 ```json
